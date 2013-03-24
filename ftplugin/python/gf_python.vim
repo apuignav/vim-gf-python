@@ -51,7 +51,7 @@ def python_goto_file():
         if os.path.isdir(d):
             f = os.path.join(d, '__init__.py')
             if os.path.isfile(f):
-                vim.command('split %s' % f)
+                vim.command('tabedit %s' % f)
                 return
         g = os.path.join(p, '%s.py*' % module )
         for f in glob.iglob(g):
