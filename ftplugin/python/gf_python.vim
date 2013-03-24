@@ -55,7 +55,7 @@ def python_goto_file():
                 return
         g = os.path.join(p, '%s.py*' % module )
         for f in glob.iglob(g):
-            vim.command('split %s' % f)
+            vim.command('tabedit %s' % f)
             return
     print >> sys.stderr, 'E447: Can\'t find file "%s" in python\'s sys.path' % cw
 EOF
