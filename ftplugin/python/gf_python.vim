@@ -43,7 +43,7 @@ import sys
 import re
 import glob
 import os
-def python_goto_file():
+def python_goto_file(command):
     cw = vim.eval('expand("<cfile>")')
     module = re.sub('\.', '/', cw)
     for p in sys.path:
@@ -55,10 +55,21 @@ def python_goto_file():
                 return
         g = os.path.join(p, '%s.py*' % module )
         for f in glob.iglob(g):
-            vim.command('tabedit %s' % f)
+            vim.command('%s %s' % (command, f))
             return
     print >> sys.stderr, 'E447: Can\'t find file "%s" in python\'s sys.path' % cw
+
+def python_goto_file_newtab():
+    python_goto_file('tabedit')
+
+def python_goto_file_same():
+    python_goto_file('e')
+
+def python_goto_file_vsplit():
+    python_goto_file('vsplit')
 EOF
 
-nnoremap <buffer> gf :python python_goto_file()<cr>
+nnoremap <buffer> gf :python python_goto_file_newtab()<cr>
+nnoremap <buffer> gff :python python_goto_file_same()<cr>
+nnoremap <buffer> gF :python python_goto_file_vsplit()<cr>
 
