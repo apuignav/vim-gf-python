@@ -26,6 +26,10 @@
 " those of the authors and should not be interpreted as representing official
 " policies, either expressed or implied, of Michael Komitee.
 
+nnoremap <buffer> gf :python python_goto_file_newtab()<cr>
+nnoremap <buffer> gff :python python_goto_file_same()<cr>
+nnoremap <buffer> gF :python python_goto_file_vsplit()<cr>
+
 if exists("g:loaded_gf_python")
     finish
 else
@@ -67,9 +71,6 @@ def python_goto_file_same():
 
 def python_goto_file_vsplit():
     python_goto_file('vsplit')
-EOF
 
-nnoremap <buffer> gf :python python_goto_file_newtab()<cr>
-nnoremap <buffer> gff :python python_goto_file_same()<cr>
-nnoremap <buffer> gF :python python_goto_file_vsplit()<cr>
+EOF
 
