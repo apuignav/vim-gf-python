@@ -48,6 +48,7 @@ import re
 import glob
 import os
 def python_goto_file(command):
+    sys.path.append(os.getcwd())
     cw = vim.eval('expand("<cfile>")')
     module = re.sub('\.', '/', cw)
     for p in sys.path:
