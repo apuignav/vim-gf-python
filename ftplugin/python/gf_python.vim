@@ -36,7 +36,7 @@ else
     let g:loaded_gf_python = 1
 endif
 
-if !has('python')
+if !has('python') && !has('python3')
     echoerr "Error: the gf_python.vim plugin requires Vim to be compiled with +python"
     finish
 endif
