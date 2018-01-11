@@ -20,9 +20,9 @@ if !s:has_supported_python
 endif
 
 " Initialize
+let s:plugin_path = escape(expand('<sfile>:p:h'), '\') 
 function! s:GfInit()
     if !exists('g:loaded_gf_python')
-        let s:plugin_path = escape(expand('<sfile>:p:h'), '\') . '/autoload'
         if s:has_supported_python == 3
             exe 'py3file ' . escape(s:plugin_path, ' ') . '/gf_python.py'
         else
